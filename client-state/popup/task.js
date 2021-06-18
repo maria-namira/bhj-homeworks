@@ -1,16 +1,30 @@
-const popup = document.getElementById('subscribe-modal'),
-    popupClose = document.querySelector('#subscribe-modal .modal__close');
+const modal = document.getElementById('subscribe-modal');
+const close = document.querySelector('.modal__close');
 
-if (!getCookie('popup')) {
-    popup.classList.add('modal_active');
+function subscribe() {
+    modal.classList.toggle('modal_active');
+    close.onclick = function() {
+    document.cookie = 'user=' + encodeURIComponent('closed');
+    console.log(document.cookie);
+    modal.classList.toggle('modal_active');
+      }
 }
 
-popupClose.addEventListener('click', () => {
-    document.cookie = 'popup=itwas';
-    popup.classList.remove('modal_active');
-});
+const getCookie = (name) => {
+const value = "; " + document.cookie;
+let parts = value.split("; " + name + "=");
+if (parts.length === 2) {
+  return parts
+  .pop()
+  .split(";")
+  .shift();
+  }
+}
 
-function getCookie(name) {
-    var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+window.onload = function() {
+if (getCookie('user')) {
+  return
+} else {
+  subscribe();
+  }
 }
