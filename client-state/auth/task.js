@@ -1,4 +1,4 @@
-const signIn = document.getElementById('signin'),
+conhst signIn = document.getElementById('signin'),
     form = document.querySelector('#signin form'),
     welcome = document.getElementById('welcome'),
     userId = document.getElementById('user_id'),
@@ -42,5 +42,5 @@ form.addEventListener('submit', (e) => {
 // деавторизация
 exit.addEventListener('click', () => {
     localStorage.removeItem('userId');
-    window.location.reload();
+    location.reload();
 });
