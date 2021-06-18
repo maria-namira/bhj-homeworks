@@ -1,13 +1,13 @@
-const textarea = document.getElementById('editor'),
-      clear = document.getElementById('button');
+const editor = document.getElementById('editor');
+const button = document.getElementById('clear');
 
-textarea.value = localStorage.getItem('text');
+editor.value = localStorage.getItem('editor');
 
-textarea.addEventListener('input', () => {
-    localStorage.setItem('text', textarea.value);
-});
+editor.oninput = () => {
+    localStorage.setItem('editor', editor.value)
+};
 
-button.addEventListener('click', () => {
-    textarea.value = '';
-    localStorage.clear();
-});
+button.onclick = function() {
+    localStorage.removeItem('editor');
+    editor.value = '';
+}
