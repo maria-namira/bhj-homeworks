@@ -1,4 +1,4 @@
-conhst signIn = document.getElementById('signin'),
+const signIn = document.getElementById('signin'),
     form = document.querySelector('#signin form'),
     welcome = document.getElementById('welcome'),
     userId = document.getElementById('user_id'),
@@ -29,6 +29,7 @@ form.addEventListener('submit', (e) => {
                 localStorage.setItem('userId', status.user_id);
             } else {
                 alert('Неверный логин/пароль');
+
             }
 
         }
@@ -42,5 +43,5 @@ form.addEventListener('submit', (e) => {
 // деавторизация
 exit.addEventListener('click', () => {
     localStorage.removeItem('userId');
-    location.reload();
+    form.reset();
 });
