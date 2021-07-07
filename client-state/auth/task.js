@@ -2,7 +2,8 @@ const signIn = document.getElementById('signin'),
     form = document.querySelector('#signin form'),
     welcome = document.getElementById('welcome'),
     userId = document.getElementById('user_id'),
-    
+    exit = document.getElementById('exit__btn');
+
 
 if (localStorage.getItem('userId')) {
     welcome.classList.add('welcome_active');
